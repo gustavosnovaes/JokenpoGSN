@@ -1,0 +1,60 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ page }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{ page }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <strong class="capitalize">{{ page }}</strong>
+    <p>Ao iniciar um novo jogo a pontuação do jogo em andamento será desconsiderada!</p>
+
+    <form [formGroup]="newGameForm" (submit)="save()">
+      <h6 *ngIf="error" class="error"> {{errorMessage}}</h6>
+      <ion-list>
+        <ion-item>
+          <ion-icon slot="start" name="desktop" style="zoom:2.0;"></ion-icon>
+          <ion-input formControlName="player1" type="text" readonly></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon slot="start" name="person" style="zoom:2.0;"></ion-icon>
+          <ion-input placeholder="Informe o nome" formControlName="player2" type="text"></ion-input>
+        </ion-item>
+
+        <ion-radio-group formControlName="gameTurns">
+          <ion-list-header>
+            <ion-label>Quantidade de partidas</ion-label>
+          </ion-list-header>
+
+          <ion-item>
+            <ion-label>3 partidas</ion-label>
+            <ion-radio slot="start" value="3"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>5 partidas</ion-label>
+            <ion-radio slot="start" value="5"></ion-radio>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>7 partidas</ion-label>
+            <ion-radio slot="start" value="7"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+
+      </ion-list>
+      <ion-button type="submit" expand="block">Salvar</ion-button>
+    </form>
+
+  </div>
+</ion-content>
