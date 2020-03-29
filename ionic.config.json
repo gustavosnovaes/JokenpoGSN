@@ -1,0 +1,7 @@
+{
+  "name": "JokenpoGu",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
