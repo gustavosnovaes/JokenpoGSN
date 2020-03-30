@@ -22,11 +22,6 @@ export class AppComponent implements OnInit {
       title: 'Ranking',
       url: '/folder/Ranking',
       icon: 'list'
-    },
-    {
-      title: 'Sair',
-      url: '/Exit',
-      icon: 'exit'
     }
   ];
   public labels = [];
@@ -44,6 +39,11 @@ export class AppComponent implements OnInit {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+    this.platform.backButton.subscribeWithPriority(666666, () => {
+        if (window.confirm("Deseja realmente sair?")) {
+            navigator["app"].exitApp();
+        }
+    });
   }
 
   ngOnInit() {
@@ -54,10 +54,7 @@ export class AppComponent implements OnInit {
   }
 
   exitApp(){
-       //this.platform.exitApp();
-       //navigator['app'].exitApp();
-       //navigator.app.exitApp();
-       console.log("Aqui");
-       //Plugins.App.exitApp();
+        console.log("Saindo");
+        navigator["app"].exitApp();
   }
 }
